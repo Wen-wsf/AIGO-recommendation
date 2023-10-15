@@ -1,1 +1,1 @@
-# AOGO-recommendation
+# AIGO-recommendation
