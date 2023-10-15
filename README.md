@@ -1,1 +1,2 @@
 # AIGO-recommendation
+這個推薦系統是連結azure matchbox的推薦系統，使用azure matchbox的api加上本地訓練的輸出連結網頁
