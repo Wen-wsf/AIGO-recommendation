@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hawoo Recommendation App</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .product-item img {
+        max-width: 150px;  /* 限制圖片的最大寬度 */
+        max-height: 150px; /* 限制圖片的最大高度 */
+        width: auto;
+        height: auto;
+        border-radius: 5px;
+        margin: 0 auto; /* 讓圖片在區塊中居中 */
+        display: block; /* 使圖片成為塊級元素，以便使用margin居中 */
+    }
+
+        .section-title {
+            background-color: pink;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .products-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);  /* 三個商品一排 */
+            gap: 20px;
+        }
+        
+        .product-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+        .product-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 10px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        <a href="/home.html" style="text-decoration: none; color: inherit;">Hawoo</a>
+    </h1>
+    <div class="section-title">
+        推薦商品
+    </div>
+    <div class="products-list">
+        {% for product in products.itertuples() %}
+            <div class="product-item">
+                <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}">
+                <div class="product-name">{{ product.product_name }}</div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="section-title">
+            特價商品
+        </div>
+        <div class="products-list">
+            {% for item in discounted_products %}
+                <div class="product-item">
+                    <img src="{{ item.image_url }}" alt="{{ item.item_name }}">
+                    <div class="product-name">{{ item.item_name }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    
+        <div class="section-title">
+            熱銷商品
+        </div>
+        <div class="products-list">
+            {% for item in hot_products %}
+                <div class="product-item">
+                    <img src="{{ item.image_url }}" alt="{{ item.item_name }}">
+                    <div class="product-name">{{ item.item_name }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!--<div>
+        
+        <h2 class="section-title">推薦商品:</h2>
+        <div class="products-list">
+            {% for product in products.itertuples() %}
+                <div class="product-item">
+                    <img src="{{ product.product_image_url }}" alt="{{ product.product_name }}">
+                    <p class="product-name">{{ product.product_name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2 class="section-title">特價商品:</h2>
+        <div class="products-list">
+            {% for item in discounted_products %}
+                <div class="product-item">
+                    <img src="{{ item.image_url }}" alt="{{ item.item_name }}">
+                    <p class="product-name">{{ item.item_name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <h2 class="section-title">熱銷商品:</h2>
+        <div class="products-list">
+            {% for item in hot_products %}
+                <div class="product-item">
+                    <img src="{{ item.image_url }}" alt="{{ item.item_name }}">
+                    <p class="product-name">{{ item.item_name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>-->
+</body>
+</html>
